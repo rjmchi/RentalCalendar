@@ -35,7 +35,7 @@ export default {
         'addingMode'],
     data () {
         return {
-            url: '/api/calendar',
+            url: 'https://rentals802.heroku.com/api/calendar',
             showForm:true,
         }
     },

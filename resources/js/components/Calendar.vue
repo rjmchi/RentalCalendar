@@ -40,7 +40,7 @@ export default {
         end_date:'',
       },
       indexToUpdate:'',
-      url: '/api/calendar/',
+      url: 'https://rentals802.heroku.com/api/calendar',
       addingMode:true,
       indexToUpdate: 0,
     }
