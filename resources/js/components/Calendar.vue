@@ -1,7 +1,8 @@
 <template>
   <div>
-    <AddEvent :event="event" :addingMode="addingMode" v-on:update="update"/>
+    <a href="/fulllist">Show all</a>
     <FullCalendar :options="calendarOptions"/>
+    <AddEvent :event="event" :addingMode="addingMode" v-on:update="update"/>
   </div>
 </template>
 
@@ -33,6 +34,7 @@ export default {
         select: this.handleSelect,  
         events:[],
         eventClick:this.showEvent,
+        eventColor: '#3a1872',
       },
       event: {
         name: '',
@@ -40,7 +42,7 @@ export default {
         end_date:'',
       },
       indexToUpdate:'',
-      url: 'https://rentals802.heroku.com/api/calendar',
+      url: 'api/calendar',
       addingMode:true,
       indexToUpdate: 0,
     }
@@ -114,23 +116,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.fc-event {
-  background-color: #3a1872;
-  border-color: #2e135a;
-  color: #fff;
-}
-.fc-button {
-  color:#fff;
-  background-color:#3a1872;
-}
-.fc-button:hover {
-  background-color:#693bb3;
-}
-.fc-title {
-  color: #fff;
-}
-
-.fc-title:hover {
-  cursor: pointer;
+div {
+  max-width:600px;
+  margin:0 auto;
 }
 </style>

@@ -21,6 +21,10 @@ Route::get('/event', function() {
     return view('addevent');
 });
 
+Route::get('/fulllist', function() {
+    return view('fulllist');
+});
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
