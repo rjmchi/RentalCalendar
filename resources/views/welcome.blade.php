@@ -9,7 +9,7 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ env('APP_ENV')=='local'?asset('css/app.css'):secure_asset('css/app.css') }}" rel="stylesheet">
 
     </head>
     <body>
@@ -17,6 +17,6 @@
             <calendar-component></calendar-component>
         </div>
 
-        <script src="{{ asset('js/app.js') }}" defer></script>
+        <script src="{{ env('APP_ENV')=='local'?asset('js/app.js'):secure_asset('js/app.js') }}" defer></script>
     </body>
 </html>
