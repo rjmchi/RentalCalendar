@@ -119,4 +119,18 @@ export default {
   border-color: #2e135a;
   color: #fff;
 }
+.fc-button {
+  color:#fff;
+  background-color:#3a1872;
+}
+.fc-button:hover {
+  background-color:#693bb3;
+}
+.fc-title {
+  color: #fff;
+}
+
+.fc-title:hover {
+  cursor: pointer;
+}
 </style>
