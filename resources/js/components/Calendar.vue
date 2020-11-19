@@ -1,8 +1,8 @@
 <template>
   <div>
-    <a href="/fulllist">Show all</a>
+    <a v-show="showForm" href="/fulllist">Show all</a>
     <FullCalendar :options="calendarOptions"/>
-    <AddEvent :event="event" :addingMode="addingMode" v-on:update="update"/>
+    <AddEvent v-show="showForm" :event="event" :addingMode="addingMode" v-on:update="update"/>
   </div>
 </template>
 
@@ -16,12 +16,12 @@ import AddEvent from './AddEvent.vue'
 
 export default {
     components: {FullCalendar, AddEvent},
+    props: ['user'],
   data () {
     return {
       calendarOptions: {
         plugins: [
-          DayGridPlugin,
-          InteractionPlugin // needed for dateClick
+          DayGridPlugin,InteractionPlugin
         ],
         initialView: 'dayGridMonth',
         headerToolbar: {
@@ -29,12 +29,8 @@ export default {
           center: 'title',
           right: 'today'
         },
-        editable: true,
-        selectable: true, 
-        select: this.handleSelect,  
         events:[],
-        eventClick:this.showEvent,
-        eventColor: '#3a1872',
+        eventColor: '#ff5555',
       },
       event: {
         name: '',
@@ -45,6 +41,7 @@ export default {
       url: 'api/calendar',
       addingMode:true,
       indexToUpdate: 0,
+      showForm: false,
     }
   },
   computed: {
@@ -76,6 +73,9 @@ export default {
         if (resp.ok) {
           resp = await resp.json();
           this.calendarOptions.events = resp.data;
+          if (this.user == 'guest') {
+            this.calendarOptions.events.forEach((e)=>e.title='Booked');
+          }
         }
       } catch (err) {
         console.log(err);
@@ -110,6 +110,14 @@ export default {
     }
   },
   created() {
+    if (this.user != 'guest'){
+      this.calendarOptions.editable =true;
+      this.calendarOptions.selectable = true; 
+      this.calendarOptions.select= this.handleSelect; 
+      this.calendarOptions.eventClick=this.showEvent;
+      this.showForm=true;
+      this.calendarOptions.eventColor = '#3a1872';
+    }
     this.fetchEvents();
   },
 }

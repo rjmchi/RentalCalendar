@@ -17,14 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/event', function() {
-    return view('addevent');
-});
-
-Route::get('/fulllist', function() {
-    return view('fulllist');
-});
-
-Auth::routes();
+Auth::routes(['register'=>false]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/fulllist', [App\Http\Controllers\HomeController::class, 'fulllist'])->name('fulllist');

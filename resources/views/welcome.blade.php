@@ -14,7 +14,11 @@
     </head>
     <body>
         <div id="app">
-            <calendar-component></calendar-component>
+            @guest
+                <calendar-component user="guest"></calendar-component>
+            @else
+                <calendar-component user="{{ Auth::user()->name}}"></calendar-component>
+            @endguest
         </div>
 
         <script src="{{ env('APP_ENV')=='local'?asset('js/app.js'):secure_asset('js/app.js') }}" defer></script>
