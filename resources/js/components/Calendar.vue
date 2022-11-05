@@ -101,7 +101,7 @@ export default {
           }
         } catch (err) {
           console.log(err);
-      }            
+      }
     },
     update: function(){
       console.log('update');
@@ -112,8 +112,8 @@ export default {
   created() {
     if (this.user != 'guest'){
       this.calendarOptions.editable =true;
-      this.calendarOptions.selectable = true; 
-      this.calendarOptions.select= this.handleSelect; 
+      this.calendarOptions.selectable = true;
+      this.calendarOptions.select= this.handleSelect;
       this.calendarOptions.eventClick=this.showEvent;
       this.showForm=true;
       this.calendarOptions.eventColor = '#3a1872';

@@ -2,15 +2,15 @@
     <div class="addForm" v-show='showForm'>
         <form @submit.prevent>
             <div class="input-group">
-                <label for="title">Guest: </label>
+                <label for="title">Guest</label>
                 <input type="text" name="title" class="form-control" v-model="event.name">
             </div>
             <div class="row mt-2">
-                <div class="input-group col-md-6">      
+                <div class="input-group col-md-6">
                     <label for="start">Start Date:</label>
                     <input type="date" name="start" class="form-control" v-model="event.start_date">
                 </div>
-                <div class="input-group col-md-6">      
+                <div class="input-group col-md-6">
                     <label for="end">End Date:</label>
                     <input type="date" name="end" class="form-control" v-model="event.end_date">
                 </div>
@@ -21,7 +21,7 @@
             <template v-else>
                 <button class="btn btn-sm btn-success" @click="updateEvent">Update</button>
                 <button class="btn btn-sm btn-danger" @click="deleteEvent">Delete</button>
-                <button class="btn btn-sm btn-secondary" @click="clearFields">Cancel</button>                
+                <button class="btn btn-sm btn-secondary" @click="clearFields">Cancel</button>
             </template>
         </form>
     </div>
@@ -55,7 +55,7 @@ export default {
                 }
             } catch (err) {
                 console.log(err);
-            }            
+            }
         },
         updateEvent: async function() {
             try {
@@ -77,7 +77,7 @@ export default {
                 }
             } catch (err) {
                 console.log(err);
-            }           
+            }
         },
         addEvent: async function() {
             try {
@@ -100,14 +100,14 @@ export default {
             } catch (err) {
                 console.log('error');
                 console.log(err);
-            }            
+            }
         },
         clearFields() {
             this.event.id = 0;
             this.event.name = '';
             this.event.start_date = '';
             this.event.end_date = '';
-            this.$emit('update');                    
+            this.$emit('update');
         }
     },
     created() {
